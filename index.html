@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lido Paddle Sports & Kayak Club</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #2c5aa0;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #2c5aa0;
+      }
+
+      .join-btn {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .join-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 0 80px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.9) 0%,
+            rgba(118, 75, 162, 0.9) 100%
+          ),
+          url("images/lidopaddle3.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("images/lidopaddle2.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 1rem 2.5rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #ff6b6b, #feca57);
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+      }
+
+      .btn-primary:hover,
+      .btn-secondary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Main Content */
+      .main-content {
+        background: white;
+        padding: 80px 0;
+        border-radius: 40px 40px 0 0;
+        margin-top: -20px;
+        position: relative;
+        z-index: 3;
+      }
+
+      /* Features Section */
+      .features {
+        margin-bottom: 80px;
+      }
+
+      .features h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #2c5aa0;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+        opacity: 0;
+      }
+
+      .feature-card:hover::before {
+        animation: shimmer 0.5s ease-in-out;
+        opacity: 1;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #2c5aa0;
+      }
+
+      /* Premium Section */
+      .premium {
+        background: linear-gradient(135deg, #2c5aa0 0%, #1e3c72 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .premium::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="200" r="100" fill="rgba(255,255,255,0.05)"/><circle cx="800" cy="300" r="150" fill="rgba(255,255,255,0.03)"/><circle cx="500" cy="700" r="120" fill="rgba(255,255,255,0.04)"/></svg>');
+      }
+
+      .premium-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .premium h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .premium-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .premium-feature {
+        text-align: left;
+        padding: 1rem;
+      }
+
+      .premium-feature h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #feca57;
+      }
+
+      /* Water Sports Section */
+      .water-sports {
+        padding: 80px 0;
+        background: linear-gradient(to right, #a8edea 0%, #fed6e3 100%);
+      }
+
+      .water-sports h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #2c5aa0;
+      }
+
+      .sports-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .sport-card {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .sport-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .sport-card h3 {
+        color: #2c5aa0;
+        margin-bottom: 1rem;
+      }
+
+      /* Community Section */
+      .community {
+        padding: 80px 0;
+        background: white;
+      }
+
+      .community h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #2c5aa0;
+      }
+
+      .community-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .stat:hover {
+        transform: scale(1.05);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* Insights Section */
+      .insights {
+        padding: 80px 0;
+        background: #f8f9fa;
+      }
+
+      .insights h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #2c5aa0;
+      }
+
+      .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+
+      .insight-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .insight-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .insight-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 4rem;
+        position: relative;
+      }
+
+      /* .insight-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.8) 0%,
+          rgba(118, 75, 162, 0.8) 100%
+        );
+        z-index: 1;
+      } */
+
+      /* .insight-image span {
+        position: relative;
+        z-index: 2;
+      } */
+
+      .insight-image.tips {
+        background-image: url("images/lidopaddle2.jpg");
+      }
+
+      .insight-image.destinations {
+        background-image: url("images/lidopaddle.jpg");
+      }
+
+      .insight-image.adventures {
+        background-image: url("images/lidopaddle7.jpg");
+      }
+
+      .insight-content {
+        padding: 2rem;
+      }
+
+      .insight-content h3 {
+        color: #2c5aa0;
+        margin-bottom: 1rem;
+      }
+
+      /* Footer */
+      footer {
+        background: #2c5aa0;
+        color: white;
+        padding: 60px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1rem;
+        color: #feca57;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #feca57;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        opacity: 0.8;
+      }
+
+      /* Animations */
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="container">
+        <a href="#" class="logo">🏄‍♂️ Lido</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="join-btn" onclick="scrollToSection('community')">
+          Join Now
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content fade-in-up">
+          <h1>Welcome to Lido<br />Paddle Sports and<br />Kayak Club!</h1>
+          <p>
+            Experience the thrill of kayaking with our exclusive club
+            membership. Join a community of water sports enthusiasts and explore
+            the beautiful waters around Lido.
+          </p>
+          <div class="cta-buttons">
+            <a href="#" class="btn-primary">Start Your Journey</a>
+            <a href="#" class="btn-secondary">Watch Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Features Section -->
+      <section class="features" id="about">
+        <div class="container">
+          <h2>
+            Experience the thrill of kayaking with our exclusive club membership
+          </h2>
+          <div class="features-grid">
+            <div class="feature-card fade-in-up">
+              <div class="feature-icon">🚣‍♂️</div>
+              <h3>Professional Instruction</h3>
+              <p>
+                Learn from certified instructors with years of experience.
+                Perfect for beginners and advanced paddlers alike.
+              </p>
+            </div>
+            <div class="feature-card fade-in-up">
+              <div class="feature-icon">🏆</div>
+              <h3>Premium Equipment</h3>
+              <p>
+                Access to top-quality kayaks, paddles, and safety gear. All
+                equipment is regularly maintained and updated.
+              </p>
+            </div>
+            <div class="feature-card fade-in-up">
+              <div class="feature-icon">🌊</div>
+              <h3>Guided Adventures</h3>
+              <p>
+                Join our guided tours to explore hidden coves, mangroves, and
+                scenic waterways around Lido Key.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Premium Section -->
+      <section class="premium" id="services">
+        <div class="container">
+          <div class="premium-content fade-in-up">
+            <h2>
+              Discover Our Premium Kayaks and Equipment for Every Adventure
+            </h2>
+            <div class="premium-features">
+              <div class="premium-feature">
+                <h4>🛶 Sea Kayaks</h4>
+                <p>
+                  Professional-grade sea kayaks designed for ocean adventures
+                  and long-distance touring.
+                </p>
+              </div>
+              <div class="premium-feature">
+                <h4>🏊‍♂️ Recreational Kayaks</h4>
+                <p>
+                  Stable and easy-to-paddle kayaks perfect for beginners and
+                  casual paddling.
+                </p>
+              </div>
+              <div class="premium-feature">
+                <h4>🦺 Safety Equipment</h4>
+                <p>
+                  Complete safety gear including life jackets, whistles, and
+                  emergency communication devices.
+                </p>
+              </div>
+              <div class="premium-feature">
+                <h4>📍 GPS Navigation</h4>
+                <p>
+                  Waterproof GPS devices and navigation tools for safe
+                  exploration of new waters.
+                </p>
+              </div>
+            </div>
+            <button class="btn-primary">Explore Equipment</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Water Sports Section -->
+      <section class="water-sports">
+        <div class="container">
+          <h2>Explore the Water: Guided Tours and Instructional Sessions</h2>
+          <div class="sports-grid">
+            <div class="sport-card fade-in-up">
+              <h3>Beginner Kayaking</h3>
+              <p>
+                Perfect introduction to kayaking with basic techniques, safety
+                protocols, and confidence-building exercises in calm waters.
+              </p>
+            </div>
+            <div class="sport-card fade-in-up">
+              <h3>Advanced Techniques</h3>
+              <p>
+                Master advanced paddling techniques, rescue procedures, and
+                navigation skills for challenging conditions.
+              </p>
+            </div>
+            <div class="sport-card fade-in-up">
+              <h3>Eco Tours</h3>
+              <p>
+                Discover local wildlife and marine ecosystems while paddling
+                through pristine natural habitats.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community Section -->
+      <section class="community" id="events">
+        <div class="container">
+          <h2>Join Our Thriving Kayaking Community Today!</h2>
+          <div class="community-stats">
+            <div class="stat fade-in-up">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Active Members</span>
+            </div>
+            <div class="stat fade-in-up">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Weekly Events</span>
+            </div>
+            <div class="stat fade-in-up">
+              <span class="stat-number">15</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat fade-in-up">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Safety Record</span>
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 3rem">
+            <a href="#" class="btn-primary">Join the Community</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insights Section -->
+      <section class="insights">
+        <div class="container">
+          <h2>Kayaking Community Insights</h2>
+          <div class="insights-grid">
+            <div class="insight-card fade-in-up">
+              <div class="insight-image tips"></div>
+              <div class="insight-content">
+                <h3>Top Tips for New Beginners</h3>
+                <p>
+                  Essential advice for those just starting their kayaking
+                  journey, including proper technique and safety tips.
+                </p>
+              </div>
+            </div>
+            <div class="insight-card fade-in-up">
+              <div class="insight-image destinations"></div>
+              <div class="insight-content">
+                <h3>The Best Kayaking Destinations</h3>
+                <p>
+                  Discover the most beautiful and exciting kayaking spots around
+                  Lido Key and beyond.
+                </p>
+              </div>
+            </div>
+            <div class="insight-card fade-in-up">
+              <div class="insight-image adventures"></div>
+              <div class="insight-content">
+                <h3>Adventures You've Never Tried</h3>
+                <p>
+                  Explore unique kayaking experiences like night paddling,
+                  fishing expeditions, and photography tours.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Contact Us</h4>
+            <!-- <p>
+              123 Lido Key Drive<br />Sarasota, FL 34242<br />Phone: (941)
+              555-LIDO<br />Email: info@lidokayak.com
+            </p> -->
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#events">Events</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Programs</h4>
+            <ul>
+              <li><a href="#">Beginner Classes</a></li>
+              <li><a href="#">Advanced Training</a></li>
+              <li><a href="#">Eco Tours</a></li>
+              <li><a href="#">Equipment Rental</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="#">Member Events</a></li>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Safety Guidelines</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Lido Paddle Sports & Kayak Club. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling function
+      function scrollToSection(sectionId) {
+        document
+          .getElementById(sectionId)
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Add fade-in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in-up");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements that should fade in
+      document
+        .querySelectorAll(".feature-card, .sport-card, .stat, .insight-card")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Add hover effects to navigation
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          if (targetId) {
+            scrollToSection(targetId);
+          }
+        });
+      });
+
+      // Add dynamic background effect
+      document.addEventListener("mousemove", (e) => {
+        const hero = document.querySelector(".hero");
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+
+        hero.style.background = `linear-gradient(${
+          45 + x * 10
+        }deg, #667eea 0%, #764ba2 100%)`;
+      });
+
+      // Add click animations to buttons
+      document
+        .querySelectorAll(".btn-primary, .btn-secondary, .join-btn")
+        .forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            if (
+              !this.getAttribute("href") ||
+              this.getAttribute("href") === "#"
+            ) {
+              e.preventDefault();
+            }
+
+            // Create ripple effect
+            const rect = this.getBoundingClientRect();
+            const ripple = document.createElement("div");
+            ripple.style.position = "absolute";
+            ripple.style.borderRadius = "50%";
+            ripple.style.background = "rgba(255,255,255,0.3)";
+            ripple.style.transform = "scale(0)";
+            ripple.style.animation = "ripple 0.6s linear";
+            ripple.style.left = e.clientX - rect.left + "px";
+            ripple.style.top = e.clientY - rect.top + "px";
+            ripple.style.width = ripple.style.height = "20px";
+            ripple.style.pointerEvents = "none";
+
+            this.style.position = "relative";
+            this.style.overflow = "hidden";
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              ripple.remove();
+            }, 600);
+          });
+        });
+
+      // Add CSS for ripple animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
